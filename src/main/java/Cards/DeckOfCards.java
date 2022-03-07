@@ -17,7 +17,7 @@ public class DeckOfCards {
      */
     public DeckOfCards() {
         deckOfCards = new ArrayList<>();
-        face = 0;
+        face = 1;
 
         while(deckOfCards.size() != 52) {
             if (deckOfCards.stream().filter(c -> c.getSuit() == 'S').count() != 13) {

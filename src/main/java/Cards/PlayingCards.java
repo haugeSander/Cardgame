@@ -19,19 +19,24 @@ public class PlayingCards {
      *             'H' for Heart, 'D' for Diamonds and 'C' for clubs
      * @param face The face value of the card, an integer between 1 and 13
      */
-    public PlayingCards(char suit, int face) {
+    public PlayingCards(char suit, int face) throws IllegalArgumentException {
+        //if (suit == 'S' || suit == 'H' || suit == 'D' || suit == 'C')
         this.suit = suit;
+        //else
+        //  throw new IllegalArgumentException("Invalid suit!");
+        //if (face <= 13 && face >= 1)
         this.face = face;
+        //else
+        //  throw new IllegalArgumentException("Invalid face!");
     }
 
     /**
-     * Returns the suit and face of the card as a string.
-     * A 4 of hearts is returned as the string "H4".
+     * Returns the face of the card (value between 1 and 13).
      *
-     * @return the suit and face of the card as a string
+     * @return the face of the card
      */
-    public String getAsString() {
-        return String.format("%s%s", suit, face);
+    public int getFace() {
+        return face;
     }
 
     /**
@@ -44,11 +49,13 @@ public class PlayingCards {
     }
 
     /**
-     * Returns the face of the card (value between 1 and 13).
+     * Returns the suit and face of the card as a string.
+     * A 4 of hearts is returned as the string "H4".
      *
-     * @return the face of the card
+     * @return the suit and face of the card as a string
      */
-    public int getFace() {
-        return face;
+    @Override
+    public String toString() {
+        return String.format("%s%s", suit, face);
     }
 }
