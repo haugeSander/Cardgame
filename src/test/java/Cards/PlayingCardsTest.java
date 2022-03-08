@@ -8,11 +8,14 @@ import org.junit.jupiter.api.Test;
 class PlayingCardsTest {
 
   @Test
-  void getFace() {
-    PlayingCards newCard = new PlayingCards('D', 1);
+  void setIllegalSuit() {
+    IllegalArgumentException invalidSuit = Assertions.assertThrows(IllegalArgumentException.class,
+        () -> new PlayingCards('W', 10), "Invalid suit!");
   }
 
   @Test
-  void getSuit() {
+  void setIllegalFace() {
+    IllegalArgumentException invalidFace = Assertions.assertThrows(IllegalArgumentException.class,
+        () -> new PlayingCards('D', -1), "Illegal face!");
   }
 }

@@ -46,14 +46,16 @@ public class HandOfCards {
     Collections.sort(sorted);
 
     for (int i = 1; i < sorted.size(); i++) {
-      if (sorted.get(i-1) + sorted.get(i) == 1) { //Something wrong
+      if (sorted.get(i) - sorted.get(i-1) == 1) { //Something wrong
         consecutive++;
-      }
+      } else
+        consecutive=0;
     }
     if (consecutive > 5)
       straight = true;
 
     System.out.println(consecutive);
+    System.out.println(hand);
 
     return straight;
   }

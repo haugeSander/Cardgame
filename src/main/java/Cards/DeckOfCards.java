@@ -8,7 +8,6 @@ import java.util.Random;
  * Contains an arrayList of 52 cards.
  */
 public class DeckOfCards {
-    private final char[] suit = { 'S', 'H', 'D', 'C' };
     private ArrayList<PlayingCards> deckOfCards;
     private int face;
 

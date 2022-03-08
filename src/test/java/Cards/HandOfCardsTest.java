@@ -8,7 +8,7 @@ class HandOfCardsTest {
 
   @Test
   void checkCards() {
-    HandOfCards hand = new HandOfCards(52);
+    HandOfCards hand = new HandOfCards(7);
     assertTrue(hand.checkCards());
   }
 }
