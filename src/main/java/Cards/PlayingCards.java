@@ -20,7 +20,7 @@ public class PlayingCards {
      * @param face The face value of the card, an integer between 1 and 13
      */
     public PlayingCards(char suit, int face) throws IllegalArgumentException {
-        //if (suit == 'S' || suit == 'H' || suit == 'D' || suit == 'C')
+        //if (suit = 'S' || suit = 'H' || suit = 'D' || suit = 'C')
         this.suit = suit;
         //else
         //  throw new IllegalArgumentException("Invalid suit!");
