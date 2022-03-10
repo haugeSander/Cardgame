@@ -2,6 +2,8 @@ package Cards;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Class which represents a hand of cards.
@@ -23,16 +25,19 @@ public class HandOfCards {
   private boolean checkCardsForFlush() {
     boolean flush = false;
 
-    int redCards = (int) (hand.stream().filter(c -> c.getSuit() == 'H').count() +
-            hand.stream().filter(c -> c.getSuit() == 'D').count());
-    if (redCards > 4) {
+    int hCounter = (int) hand.stream().filter(c -> c.getSuit() == 'H').count();
+    int dCounter = (int) hand.stream().filter(c -> c.getSuit() == 'D').count();
+    int sCounter = (int) hand.stream().filter(c -> c.getSuit() == 'S').count();
+    int cCounter = (int) hand.stream().filter(c -> c.getSuit() == 'C').count();
+
+    if (hCounter >= 5 || dCounter >= 5 || sCounter >= 5 || cCounter >= 5)
       flush = true;
-    }
+
     return flush;
   }
 
   /**
-   * Poor method of seeing if a hand has Straight.
+   * Method of seeing if a hand has Straight.
    * @return Boolean, straight = true.
    */
   private boolean checkCardsForStraight() {
@@ -43,26 +48,55 @@ public class HandOfCards {
     for (PlayingCards b : hand) {
       sorted.add(b.getFace());
     }
-    Collections.sort(sorted);
 
-    for (int i = 1; i < sorted.size(); i++) {
-      if (sorted.get(i) - sorted.get(i-1) == 1) { //Something wrong
+    List<Integer> uniqueSorted = sorted.stream().distinct().collect(Collectors.toList());
+    Collections.sort(uniqueSorted);
+
+    for (int i = 1; i < uniqueSorted.size(); i++) {
+      if (uniqueSorted.get(i) - uniqueSorted.get(i-1) == 1)
         consecutive++;
-      } else
+      else
         consecutive=0;
     }
-    if (consecutive > 5)
+
+    if (consecutive >= 5) {
       straight = true;
-
-    System.out.println(consecutive);
-    System.out.println(hand);
-
+    }
     return straight;
   }
 
   /**
+   * Counts if there is multiples of same faces.
+   * @return String if there is a pair or triple, blank if nothing.
+   */
+  private String sameFaceCount() {
+    boolean pair = false;
+    boolean triple = false;
+    int count = 0;
+
+    for (int i = 0; i < hand.size(); i++) {
+      int finalI = i;
+      count = (int) hand.stream().filter(c -> c.getFace() == finalI).count();
+      System.out.println(count);
+
+      if (count == 2)
+        pair = true;
+      if (count == 3) {
+        triple = true;
+      }
+    }
+
+    if (pair)
+      return "Pair!";
+    else if (triple)
+      return "Triple!";
+    else
+      return "";
+  }
+
+  /**
    * Method to check all point giving combinations.
-   * @return True if cards has Flush or Straight.
+   * @return True if cards has Flush/Straight/pair or triple.
    */
   public boolean checkCards() {
     if (checkCardsForStraight() && checkCardsForFlush()) {
@@ -74,7 +108,13 @@ public class HandOfCards {
     } else if (checkCardsForFlush()) {
       System.out.println("Flush!");
       return true;
-    } else
+    } else if (sameFaceCount().equalsIgnoreCase("Triple!")) {
+      System.out.println("Triple!");
+      return true;
+    } else if (sameFaceCount().equalsIgnoreCase("pair!")) {
+      System.out.println("Pair");
+      return true;
+    }else
       return false;
   }
 }
