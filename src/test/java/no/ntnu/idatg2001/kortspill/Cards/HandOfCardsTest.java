@@ -1,4 +1,4 @@
-package Cards;
+package no.ntnu.idatg2001.kortspill.Cards;
 
 import static org.junit.jupiter.api.Assertions.*;
 

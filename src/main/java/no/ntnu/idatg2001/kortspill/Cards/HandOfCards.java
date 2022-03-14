@@ -1,4 +1,4 @@
-package Cards;
+package no.ntnu.idatg2001.kortspill.Cards;
 
 import java.util.ArrayList;
 import java.util.Collections;

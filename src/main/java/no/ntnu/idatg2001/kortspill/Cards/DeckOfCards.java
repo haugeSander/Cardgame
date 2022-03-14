@@ -1,4 +1,4 @@
-package Cards;
+package no.ntnu.idatg2001.kortspill.Cards;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -50,7 +50,7 @@ public class DeckOfCards {
 
         for (int i = 0; i < n; i++) {
             handOfCards.add(
-                deckOfCards.get(r.nextInt(0, 52)));
+                deckOfCards.get(r.nextInt( 52)));
         }
         return handOfCards;
     }

@@ -1,4 +1,4 @@
-package Cards;
+package no.ntnu.idatg2001.kortspill.Cards;
 
 /**
  * Represents a playing card. A playing card has a number (face) between

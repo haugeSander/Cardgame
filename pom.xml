@@ -8,29 +8,26 @@
     <artifactId>Kortspill-Sandeth</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!-- Some project variables -->
     <properties>
-        <!--
-            Set version of Java used by the source code and to produce the output for.
-            If not set, the default version 1.6 is used.
-        -->
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <!--
-            A Java source-file is a "plain text file", but since there is no such thing as a
-            "standard plain text file" (since there are several text-encodings out there), we
-            need to tell the Java-compiler what the coding format is for your Java-files.
-            The standard is the UTF-8 encoding.
-        -->
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-            <dependency>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-controls</artifactId>
-                <version>17.0.1</version>
-            </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>17.0.1</version>
+        </dependency>
+
+        <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-fxml</artifactId>
+        <version>11.0.2</version>
+    </dependency>
+
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -41,47 +38,33 @@
 
     <build>
         <plugins>
-            <!--
-                Surefire is the test-plugin for Maven. Surefire will use whatever
-                test engine (JUnit4, JUnit5, TestNG etc) added as dependency
-                to the project.
-                The default version of surefire that comes bundled with maven is 2.12.4.
-                This version only supports up to JUnit4.
-                Hence to be able to run JUnit 5 tests, we need to add a newer version of
-                the Surefire plugin, like 3.0.0-M5
-            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
             </plugin>
 
-            <!--
-                For a JAR-file to be executable, a MANIFEST.MF-file must be added to the JAR-file
-                containing the full name of the class holding the main()-method.
-                The maven-jar-plugin can be used to automatically create this MANIFEST.MF-file
-                from the project.
-            -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
                 <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <!-- add the full name to your class containing the main()-method -->
-                            <mainClass>src/main/java/Main.java</mainClass>
-                        </manifest>
-                    </archive>
+                    <mainClass>no.ntnu.idatg2001.kortspill.GUI</mainClass>
                 </configuration>
             </plugin>
 
-            <!--
-                For the JavaDoc to be built as a part of the package phase, we add the maven-java-doc
-                plugin, and attach it to the package phase.
-            -->
             <plugin>
+                <!-- As averything else in Maven, a Plugin is also uniquely identified by its coordinates -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.3.1</version>
@@ -111,14 +94,22 @@
                     <nohelp>true</nohelp>
                 </configuration>
             </plugin>
-                <plugin>
-                    <groupId>org.openjfx</groupId>
-                    <artifactId>javafx-maven-plugin</artifactId>
-                    <version>0.0.8</version>
-                    <configuration>
-                        <mainClass>HelloFX</mainClass>
-                    </configuration>
-                </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <!-- add the full name to your class containing the main()-method -->
+                            <mainClass>no.ntnu.idatg2001.kortspill.GUI</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
 </project>
