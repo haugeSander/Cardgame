@@ -98,23 +98,46 @@ public class HandOfCards {
    * Method to check all point giving combinations.
    * @return True if cards has Flush/Straight/pair or triple.
    */
-  public boolean checkCards() {
+  public String checkCards() {
     if (checkCardsForStraight() && checkCardsForFlush()) {
-      System.out.println("Straight & Flush!!");
-      return true;
+      return "Royal Flush!";
     } else if (checkCardsForStraight()) {
-      System.out.println("Straight!");
-      return true;
+      return "Straight!";
     } else if (checkCardsForFlush()) {
-      System.out.println("Flush!");
-      return true;
+      return "Flush!";
     } else if (sameFaceCount().equalsIgnoreCase("Triple!")) {
-      System.out.println("Triple!");
-      return true;
-    } else if (sameFaceCount().equalsIgnoreCase("pair!")) {
-      System.out.println("Pair");
-      return true;
+      return "Triple!";
+    } else if (sameFaceCount().equalsIgnoreCase("Pair!")) {
+      return "Pair";
     }else
-      return false;
+      return "No points.";
+  }
+
+  /**
+   * Method counting the hearts.
+   * @return Returns all heart cards as String.
+   */
+  public String countHearts() {
+    List<PlayingCards> hearts = hand.stream().filter(c -> c.getSuit() == 'H').toList();
+    if (hearts.isEmpty())
+      return "";
+    else
+      return hearts.toString();
+  }
+
+  /**
+   * Method which counts the faces' values.
+   * @return integer of all face values summed.
+   */
+  public int countFaces() {
+    return hand.stream().map(PlayingCards::getFace).reduce(0,(a,b) -> a+b);
+  }
+
+  /**
+   * Getter for the hand.
+   * @return String representation of the hand.
+   */
+  public String getHand() {
+    return hand.toString();
   }
 }

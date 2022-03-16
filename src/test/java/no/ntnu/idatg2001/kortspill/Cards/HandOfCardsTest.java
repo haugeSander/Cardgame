@@ -9,6 +9,6 @@ class HandOfCardsTest {
   @Test
   void checkCards() {
     HandOfCards hand = new HandOfCards(52);
-    assertTrue(hand.checkCards());
+    assertEquals(hand.checkCards(), "Royal Flush!");
   }
 }

@@ -9,10 +9,10 @@ public class GUI extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("hello-fx.fxml"));
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("kortspill-sandeth.fxml"));
     Scene scene = new Scene(fxmlLoader.load(), 600, 600);
 
-    stage.setTitle("CardGame.exe");
+    stage.setTitle("CardGame");
     stage.setScene(scene);
     stage.show();
   }
