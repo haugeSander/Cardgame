@@ -1,4 +1,4 @@
-package Cards;
+package no.ntnu.idatg2001.kortspill.Cards;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,6 +9,6 @@ class HandOfCardsTest {
   @Test
   void checkCards() {
     HandOfCards hand = new HandOfCards(52);
-    assertTrue(hand.checkCards());
+    assertEquals(hand.checkCards(), "Royal Flush!");
   }
 }
