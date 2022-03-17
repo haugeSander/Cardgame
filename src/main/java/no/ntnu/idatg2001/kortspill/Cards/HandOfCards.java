@@ -137,7 +137,11 @@ public class HandOfCards {
    * Getter for the hand.
    * @return String representation of the hand.
    */
-  public String getHand() {
-    return hand.toString();
+  public List<String> getHandAsPng() {
+    List<String> pngString = new ArrayList<>();
+    for (PlayingCards p : hand) {
+      pngString.add(p.getPngValue());
+    }
+    return pngString;
   }
 }

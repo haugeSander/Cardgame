@@ -5,13 +5,21 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import no.ntnu.idatg2001.kortspill.Cards.HandOfCards;
+import no.ntnu.idatg2001.kortspill.Cards.PlayingCards;
 
 public class Controller implements Initializable {
-  public javafx.scene.control.TextArea cardToText;
+  //public javafx.scene.control.TextArea cardToText;
   public TextField SumOfFaces;
   public TextField CardsOfHearts;
   public TextField FlushTF;
+  public ImageView Card1;
+  public ImageView Card2;
+  public ImageView Card3;
+  public ImageView Card4;
+  public ImageView Card5;
   private HandOfCards hand;
 
   /**
@@ -28,8 +36,19 @@ public class Controller implements Initializable {
    */
   @FXML
   private void onDealHandClicked() {
-    cardToText.setText(hand.getHand());
-  }
+    URL urlForPhoto = Controller.class.getResource("/DeckOfCardsPNG/");
+    Image image1 = new Image(urlForPhoto + hand.getHandAsPng().get(0));
+    Card1.setImage(image1);
+    Image image2 = new Image(urlForPhoto + hand.getHandAsPng().get(1));
+    Card2.setImage(image2);
+    Image image3 = new Image(urlForPhoto + hand.getHandAsPng().get(2));
+    Card3.setImage(image3);
+    Image image4 = new Image(urlForPhoto + hand.getHandAsPng().get(3));
+    Card4.setImage(image4);
+    Image image5 = new Image(urlForPhoto + hand.getHandAsPng().get(4));
+    Card5.setImage(image5);
+    //for (int i = 1; i-1 < hand.getHandAsPng().size(); i++) {
+    }
 
   /**
    * Button action of the Check cards button.

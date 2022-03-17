@@ -11,4 +11,10 @@ class HandOfCardsTest {
     HandOfCards hand = new HandOfCards(52);
     assertEquals(hand.checkCards(), "Royal Flush!");
   }
+
+  @Test
+  void getPngList() {
+    HandOfCards hand = new HandOfCards(5);
+    System.out.println(hand.getHandAsPng());
+  }
 }

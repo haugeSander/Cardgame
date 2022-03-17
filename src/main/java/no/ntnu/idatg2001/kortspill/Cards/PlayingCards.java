@@ -48,6 +48,10 @@ public class PlayingCards {
         return suit;
     }
 
+    public String getPngValue() {
+        return (Character.toString(suit) + face + ".png");
+    }
+
     /**
      * Returns the suit and face of the card as a string.
      * A 4 of hearts is returned as the string "H4".
