@@ -2,6 +2,7 @@ package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -35,6 +36,8 @@ public class Controller implements Initializable {
    */
   @FXML
   private void onDealHandClicked() {
+    hand = new HandOfCards(5);
+
     URL urlForPhoto = Controller.class.getResource("/DeckOfCardsPNG/");
     Image image1 = new Image(urlForPhoto + hand.getHandAsPng().get(0));
     Card1.setImage(image1);
@@ -69,6 +72,22 @@ public class Controller implements Initializable {
    */
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    hand = new HandOfCards(5);
+    URL urlForPhoto = Controller.class.getResource("/DeckOfCardsPNG/");
+    Image image = new Image(urlForPhoto + "backOfCard.jpg");
+    Card1.setImage(image);
+    Card2.setImage(image);
+    Card3.setImage(image);
+    Card4.setImage(image);
+    Card5.setImage(image);
+  }
+
+  public void onReloadClicked() {
+    Image image = new Image(Controller.class.getResource("/DeckOfCardsPNG/")
+        + "backOfCard.jpg");
+    Card1.setImage(image);
+    Card2.setImage(image);
+    Card3.setImage(image);
+    Card4.setImage(image);
+    Card5.setImage(image);
   }
 }

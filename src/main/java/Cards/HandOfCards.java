@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import Cards.DeckOfCards;
-import Cards.PlayingCards;
 
 /**
  * Class which represents a hand of cards.
@@ -68,32 +66,14 @@ public class HandOfCards {
   }
 
   /**
-   * Counts if there is multiples of same faces.
-   * @return String if there is a pair or triple, blank if nothing.
+   * Counts amount of pairs in hand.
+   * If there is one pair, one is returned.
+   * @return int representation of pairs.
    */
-  private String sameFaceCount() {
-    boolean pair = false;
-    boolean triple = false;
-    int count = 0;
-
-    for (int i = 0; i < hand.size(); i++) {
-      int finalI = i;
-      count = (int) hand.stream().filter(c -> c.getFace() == finalI).count();
-      System.out.println(count);
-
-      if (count == 2)
-        pair = true;
-      if (count == 3) {
-        triple = true;
-      }
-    }
-
-    if (pair)
-      return "Pair!";
-    else if (triple)
-      return "Triple!";
-    else
-      return "";
+  private int sameFaceCount() {
+    return (int) hand.stream()
+        .collect(Collectors.groupingBy(PlayingCards::getFace, Collectors.counting()))
+        .values().stream().filter(i-> i > 1).count();
   }
 
   /**
@@ -107,9 +87,7 @@ public class HandOfCards {
       return "Straight!";
     } else if (checkCardsForFlush()) {
       return "Flush!";
-    } else if (sameFaceCount().equalsIgnoreCase("Triple!")) {
-      return "Triple!";
-    } else if (sameFaceCount().equalsIgnoreCase("Pair!")) {
+    } else if (sameFaceCount() > 0) {
       return "Pair";
     }else
       return "No points.";
@@ -146,5 +124,35 @@ public class HandOfCards {
       pngString.add(p.getPngValue());
     }
     return pngString;
+  }
+
+  /**
+   * Method which counts amount of same occurrences.
+   * @return String pair, triple or null
+   * @deprecated
+   */
+  private String sameFaceCount1() {
+    boolean pair = false;
+    boolean triple = false;
+    int count = 0;
+
+    for (int i = 0; i < hand.size(); i++) {
+      int finalI = i;
+      count = (int) hand.stream().filter(c -> c.getFace() == finalI).count();
+      System.out.println(count);
+
+      if (count == 2)
+        pair = true;
+      if (count == 3) {
+        triple = true;
+      }
+    }
+
+    if (pair)
+      return "Pair!";
+    else if (triple)
+      return "Triple!";
+    else
+      return "";
   }
 }
