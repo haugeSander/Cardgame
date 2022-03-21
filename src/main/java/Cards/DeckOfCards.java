@@ -1,7 +1,8 @@
-package no.ntnu.idatg2001.kortspill.Cards;
+package Cards;
 
 import java.util.ArrayList;
 import java.util.Random;
+import Cards.PlayingCards;
 
 /**
  * Class which represents a deck of cards.

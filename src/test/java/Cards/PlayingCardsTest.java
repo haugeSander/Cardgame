@@ -1,9 +1,9 @@
-package no.ntnu.idatg2001.kortspill.Cards;
+package Cards;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.net.URL;
-import no.ntnu.idatg2001.kortspill.Controller.Controller;
+import Controller.Controller;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

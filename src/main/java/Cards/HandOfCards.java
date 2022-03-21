@@ -1,9 +1,11 @@
-package no.ntnu.idatg2001.kortspill.Cards;
+package Cards;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import Cards.DeckOfCards;
+import Cards.PlayingCards;
 
 /**
  * Class which represents a hand of cards.
@@ -118,7 +120,8 @@ public class HandOfCards {
    * @return Returns all heart cards as String.
    */
   public String countHearts() {
-    List<PlayingCards> hearts = hand.stream().filter(c -> c.getSuit() == 'H').toList();
+    List<PlayingCards> hearts = hand.stream().filter(c -> c.getSuit() == 'H').
+        collect(Collectors.toList());
     if (hearts.isEmpty())
       return "";
     else

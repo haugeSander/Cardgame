@@ -1,4 +1,4 @@
-package no.ntnu.idatg2001.kortspill.Controller;
+package Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -7,14 +7,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import no.ntnu.idatg2001.kortspill.Cards.HandOfCards;
-import no.ntnu.idatg2001.kortspill.Cards.PlayingCards;
+import Cards.HandOfCards;
 
 public class Controller implements Initializable {
   //public javafx.scene.control.TextArea cardToText;
   public TextField SumOfFaces;
   public TextField CardsOfHearts;
-  public TextField FlushTF;
+  public TextField Points;
   public ImageView Card1;
   public ImageView Card2;
   public ImageView Card3;
@@ -47,7 +46,6 @@ public class Controller implements Initializable {
     Card4.setImage(image4);
     Image image5 = new Image(urlForPhoto + hand.getHandAsPng().get(4));
     Card5.setImage(image5);
-    //for (int i = 1; i-1 < hand.getHandAsPng().size(); i++) {
     }
 
   /**
@@ -56,7 +54,7 @@ public class Controller implements Initializable {
    */
   @FXML
   private void onCheckCardsClicked() {
-    FlushTF.setText(hand.checkCards());
+    Points.setText(hand.checkCards());
 
     if (hand.countHearts().isBlank() || hand.countHearts().isEmpty())
       CardsOfHearts.setText("No Hearts!");

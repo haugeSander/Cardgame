@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.idatg2001.kortspill.Controller.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -59,7 +59,7 @@
          <children>
             <TextField fx:id="SumOfFaces" GridPane.columnIndex="1" />
             <TextField fx:id="CardsOfHearts" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="FlushTF" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="Points" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Sum Of Faces:">
                <font>
                   <Font size="20.0" />
