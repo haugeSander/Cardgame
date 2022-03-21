@@ -4,109 +4,49 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>no.ntnu.sandeth.kortspill</groupId>
-    <artifactId>Kortspill-Sandeth</artifactId>
+    <groupId>no.ntnu.idatg1002</groupId>
+    <artifactId>kortspill-sandeth</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>17.0.1</version>
-        </dependency>
-
-        <dependency>
+    <dependency>
         <groupId>org.openjfx</groupId>
-        <artifactId>javafx-fxml</artifactId>
-        <version>11.0.2</version>
+        <artifactId>javafx-controls</artifactId>
+        <version>17.0.2</version>
     </dependency>
 
-
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-fxml</artifactId>
+        <version>17.0.2</version>
+    </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
+            <artifactId>junit-jupiter-api</artifactId>
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>17</source>
-                    <target>17</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
             </plugin>
-
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.8</version>
+                <version>0.0.6</version>
                 <configuration>
-                    <mainClass>no.ntnu.idatg2001.kortspill.GUI</mainClass>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <!-- As averything else in Maven, a Plugin is also uniquely identified by its coordinates -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.3.1</version>
-                <!-- configure how to execute this plugin -->
-                <executions>
-                    <execution>
-                        <!--
-                            connect the execution of the plugin to the Maven lifecycle phase "package"
-                            so that JavaDoc is generated every time you run "mvn package"
-                        -->
-                        <phase>package</phase>
-                        <id>attach-javadocs</id>
-                        <!--
-                            set which of the goals in the plugin to execute. The JavaDoc plugin
-                            has a total of 16 goals to choose from. See: https://maven.apache.org/plugins/maven-javadoc-plugin/
-                            The most common once beeing either "javadoc" or "jar"
-                        -->
-                        <goals>
-                            <goal>javadoc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!-- generate javadoc only for public classes and members -->
-                    <show>public</show>
-                    <!-- Omits the HELP link in the navigation bars at the top and bottom of each page of output. -->
-                    <nohelp>true</nohelp>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <!-- add the full name to your class containing the main()-method -->
-                            <mainClass>no.ntnu.idatg2001.kortspill.GUI</mainClass>
-                        </manifest>
-                    </archive>
+                    <mainClass>GUI</mainClass>
                 </configuration>
             </plugin>
         </plugins>
